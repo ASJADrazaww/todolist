@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Todo List</title>
+</head>
+<body>
+  <h1>✅ Todo List</h1>
+
+  <form action="/add" method="POST">
+    <input type="text" name="title" placeholder="Task Title" />
+    <select name="priority">
+      <option value="High">High</option>
+      <option value="Medium" selected>Medium</option>
+      <option value="Low">Low</option>
+    </select>
+    <button type="submit">➕ Add</button>
+  </form>
+
+  <ul>
+    <% tasks.forEach(task => { %>
+      <li>
+        <strong><%= task.title %></strong> — <%= task.priority %>
+
+        <form action="/edit/<%= task._id %>" method="POST" style="display:inline;">
+          <input type="text" name="newTitle" value="<%= task.title %>" />
+          <select name="newPriority">
+            <option value="High" <%= task.priority === 'High' ? 'selected' : '' %>>High</option>
+            <option value="Medium" <%= task.priority === 'Medium' ? 'selected' : '' %>>Medium</option>
+            <option value="Low" <%= task.priority === 'Low' ? 'selected' : '' %>>Low</option>
+          </select>
+          <button type="submit">✏️</button>
+        </form>
+
+        <form action="/delete/<%= task._id %>" method="POST" style="display:inline;">
+          <button type="submit">❌</button>
+        </form>
+      </li>
+    <% }) %>
+  </ul>
+</body>
+</html>

@@ -4,11 +4,11 @@ const bodyParser = require("body-parser");
 const app = express();
 
 
-mongoose.connect("mongodb+srv://qudseefatima:qze2cdwXihy4N39G@cluster0.ru64a74.mongodb.net/todolist?retryWrites=true&w=majority
-", {
+mongoose.connect("mongodb+srv://qudseefatima:qze2cdwXihy4N39G@cluster0.ru64a74.mongodb.net/todolist?retryWrites=true&w=majority", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
+
 
 
 const Task = require("./models/Task");
